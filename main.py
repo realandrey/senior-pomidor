@@ -27,3 +27,4 @@ if not number % 3 == 0:
     print("Число", number, "не кратно 3.")
 else:
     print("Число", number, "кратно 3.")
+
