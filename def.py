@@ -50,4 +50,4 @@ def safe_withdraw(balance, amount):
     except ValueError as error:
         print(error)
 
-safe_withdraw(1000ount)
+# safe_withdraw(1000, 4000)
