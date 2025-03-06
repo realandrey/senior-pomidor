@@ -51,3 +51,22 @@ def safe_withdraw(balance, amount):
         print(error)
 
 # safe_withdraw(1000, 4000)
+
+
+class Account:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print("Депозит успешно добавлен")
+
+# Создаем экземпляр класса Account
+my_account = Account("Alice", 100)
+print(f"Владелец: {my_account.owner}, Баланс: {my_account.balance}")
+
+# Добавляем депозит
+my_account.deposit(50)
+print(f"Баланс после депозита: {my_account.balance}")
