@@ -9,4 +9,4 @@ def check_age(age):
     else:
         print("Пора наслаждаться заслуженным отдыхом!")
 
-check_age('age')
+check_age("age")
