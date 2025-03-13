@@ -4,4 +4,4 @@ def find_max(a, b):
     else:
         print(f"Максимальное из чисел {a} и {b}: {b}.")
 
-find_max(23 `, 44)
+find_max(23, 44)
