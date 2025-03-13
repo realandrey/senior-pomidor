@@ -5,4 +5,4 @@ def sum_numbers(n):
     print (f"Сумма чисел от 1 до {n}: {summ}")
     return summ
 
-sum_numbers(7)
+sum_numbers(4)
