@@ -1,9 +1,6 @@
 def countdown():
-    count = 11
-    for i in range(11):
-        while count > 0:
-            count -= 1
-            print(count)
+    for i in range(10, 1, -1):
+            print(i)
 
     print("Старт!")
 
