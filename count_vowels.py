@@ -7,4 +7,4 @@ def count_vowels(string):
     print(f"Количество гласных в строке '{string}': {count}")
     return count
 
-count_vowels("Hello World")
+count_vowels("Hello World!")
