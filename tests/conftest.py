@@ -33,3 +33,11 @@ def booking_data():
         },
         "additionalneeds": "Breakfast"
     }
+
+@pytest.fixture()
+def created_booking(auth_session, booking_data):
+    response = auth_session.post(f"{BASE_URL}/booking", json=booking_data)
+    assert response.status_code == 200, "Ошибка создания бронирования"
+    booking_id = response.json().get("bookingid")
+    assert booking_id is not None, "Не получили bookingid"
+    return booking_id
