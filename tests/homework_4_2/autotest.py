@@ -10,8 +10,8 @@ HEADERS = {
 }
 
 AUTH_DATA = {
-    "username": "your_email",
-    "password": "your_password",
+    "username": "real_andreyka@mail.ru",
+    "password": "Test@123",
     "scope": "",
     "client_id": "",
     "client_secret": ""
