@@ -1,33 +1,30 @@
 import pytest
 import requests
 
-from faker import Faker
+from constants import BASE_URL, AUTH_HEADERS, AUTH_DATA, API_HEADERS
 
-from constant import HEADERS, BASE_URL
-
-faker = Faker()
 
 @pytest.fixture(scope="session")
 def auth_session():
-    """Создаёт сессию с авторизацией и возвращает объект сессии."""
-    session = requests.session()
-    session.headers.update(HEADERS)
+    session = requests.Session()
+    response = session.post(f"{BASE_URL}/api/v1/login/access-token", data=AUTH_DATA, headers=AUTH_HEADERS)
+    assert response.status_code == 200, f"Auth failed: {response.status_code}, {response.text}"
 
-    auth_response = session.post(
-        f"{BASE_URL}/api/v1/login/access-token",
-        data = {"username" : "real_andreyka@mail.ru", "password" : "Test@123"}
-    )
-    assert auth_response.status_code == 200, "Ошибка авторизации, статус код не 200"
-    token = auth_response.json().get('token')
-    assert token is not None, "Токен не найден в ответе"
+    token = response.json().get("access_token")
+    assert token, "No access_token found"
 
-    session.headers.update({'Cookie':f"token={token}"})
+    session.headers.update(API_HEADERS)
+    session.headers.update({"Authorization": f"Bearer {token}"})
+
     return session
+
+from faker import Faker
+
+fake = Faker()
 
 @pytest.fixture()
 def item_data():
-    """Генерирует данные для создания нового элемента."""
     return {
-        "title": faker.title(),
-        "description": faker.description()
+        "title": fake.word().capitalize(),
+        "description": fake.sentence(nb_words=10)
     }
