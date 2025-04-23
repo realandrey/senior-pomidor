@@ -24,3 +24,16 @@ class TestItems:
         assert "data" in data, "Response missing 'data' key"
         assert isinstance(data["data"], list), "'data' is not a list"
         assert isinstance(data.get("count"), int), "'count' should be integer"
+
+    def test_get_items_filter
+
+
+
+
+
+    def test_get_items_sort
+
+
+
+
+    def test_get_items_pagination
