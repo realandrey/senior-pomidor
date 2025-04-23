@@ -39,3 +39,13 @@ class TestItems:
         data = response.json()
         assert data.get("title") == updated_data["title"]
         assert data.get("description") == updated_data["description"]
+
+    def test_delete_item(self,auth_session):
+        assert hasattr(self.__class__, "created_item_id"), "Нет созданного item_id"
+        item_id = self.__class__.created_item_id
+
+        response = auth_session.delete(f"{self.endpoint}{item_id}")
+        assert response.status_code == 200, "Данные не удалились"
+
+        get_response = auth_session.get(f"{self.endpoint}{item_id}")
+        assert get_response.status_code == 404, "Элемент не удалён корректно"
