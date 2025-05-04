@@ -69,3 +69,4 @@ class TestBookings:
 
         response = auth_session.get(f"{BASE_URL}/booking/{created_booking}")
         assert response.status_code == 404, "Букинг не был удален"
+
