@@ -48,6 +48,12 @@ page.wait_for_selector('button:has-text("Finish")')
 page.click('[id="finish"]')
 page.wait_for_url('https://www.saucedemo.com/checkout-complete.html')
 
+page.click('[id="react-burger-menu-btn"]')
+page.wait_for_selector('[id="logout_sidebar_link"]')
+page.click('[id="logout_sidebar_link"]')
+
+page.wait_for_url('https://www.saucedemo.com/', timeout= 10000)
+
 time.sleep(5)
 
 # После выполнения необходимых действий, следует явно закрыть браузер
