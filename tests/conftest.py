@@ -1,10 +1,21 @@
 import pytest
 import requests
 from faker import Faker
+from playwright.sync_api import sync_playwright
 
 from constant import HEADERS, BASE_URL
 
 faker = Faker()
+
+@pytest.fixture(scope="session")
+def browser():
+    playwright = sync_playwright().start() # Далее, используя объект playwright, можно запускать браузер и работать с ним
+    browser = playwright.chromium.launch(headless=False, slow_mo=1000)
+    page = browser.new_page()
+    yield browser
+    browser.close()
+    playwright.stop()
+
 
 @pytest.fixture(scope="session")
 def auth_session():
