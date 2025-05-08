@@ -6,6 +6,8 @@ class CheckoutPage(BasePage):
     FIRST_NAME_SELECTOR = '#first-name'
     LAST_NAME_SELECTOR = '#last-name'
     POSTAL_CODE_SELECTOR = '#postal-code'
+    CONTINUE_BUTTON_SELECTOR = '[id="continue"]'
+    FINISH_BUTTON_SELECTOR = '[id="finish"]'
 
     def __init__(self, page):
         super().__init__(page)
@@ -20,3 +22,6 @@ class CheckoutPage(BasePage):
         self.wait_for_selector_and_type(self.LAST_NAME_SELECTOR, last_name, 100)
         self.wait_for_selector_and_type(self.POSTAL_CODE_SELECTOR, postal_code, 100)
         self.assert_input_value(self.POSTAL_CODE_SELECTOR, postal_code)
+        self.wait_for_selector_and_click(self.CONTINUE_BUTTON_SELECTOR)
+        self.wait_for_selector_and_click(self.FINISH_BUTTON_SELECTOR)
+
